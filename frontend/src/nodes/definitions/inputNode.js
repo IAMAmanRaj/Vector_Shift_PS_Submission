@@ -1,11 +1,9 @@
 import { Position } from "reactflow";
 import { createNode as create } from "./../BaseNode";
 import { NODE_ACCENTS } from "../../constants/theme";
-import { getNextIndexedName } from "../../utils/base-node-helpers";
+import { getNextIndexedName } from "../utils/base-node-helpers";
 
-import {
-  INPUT_NAME_PREFIX,
-} from "../../constants/NodeConstants";
+import { INPUT_NAME_PREFIX } from "../../constants/NodeConstants";
 
 export const InputNode = create({
   title: "Input",

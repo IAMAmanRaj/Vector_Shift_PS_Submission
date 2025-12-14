@@ -1,4 +1,4 @@
-import { useStore } from "../store";
+import { useStore } from "../../store/store";
 
 export const buildInitialState = (fields, { id, data }) => {
   return fields.reduce((acc, field) => {
@@ -31,10 +31,14 @@ export const resolveHandleId = (handleConfig, nodeId) => {
 export const renderField = (field, value, onChange) => {
   const { inputType = "text", options, inputProps } = field;
 
-  const baseInputClasses = "w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors";
-  const textareaClasses = "w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors resize-none min-h-[80px]";
-  const selectClasses = "w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors bg-white";
-  const checkboxClasses = "w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-2 focus:ring-blue-500 cursor-pointer";
+  const baseInputClasses =
+    "w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors";
+  const textareaClasses =
+    "w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors resize-none min-h-[80px]";
+  const selectClasses =
+    "w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors bg-white";
+  const checkboxClasses =
+    "w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-2 focus:ring-blue-500 cursor-pointer";
 
   if (inputType === "select") {
     return (
@@ -127,4 +131,3 @@ export const getNextIndexedName = (prefix) => {
 
   return `${prefix}${nextIndex}`;
 };
-

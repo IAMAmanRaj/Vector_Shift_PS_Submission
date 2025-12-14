@@ -1,11 +1,11 @@
 import { memo, useState, useEffect, useCallback } from "react";
-import { useStore } from "../store";
+import { useStore } from "../store/store";
 import { Handle, Position } from "reactflow";
 import {
   buildInitialState as initialData,
   resolveHandleId,
   renderField,
-} from "../utils/base-node-helpers";
+} from "./utils/base-node-helpers";
 
 const Base = memo(({ nodeConfig, id, data }) => {
   const {
