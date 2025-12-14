@@ -20,8 +20,6 @@ export const NODE_LABELS = {
 };
 
 // This is for Internal ID Handling (For defaultValue logic when there's no initial data coming from reactflow render)
-export const INPUT_ID_OLD_PREFIX = `${NODE_TYPES.INPUT}-`;
-export const INPUT_ID_NEW_PREFIX = "input_";
+export const INPUT_NAME_PREFIX = "input_";
 
-export const OUTPUT_ID_OLD_PREFIX = `${NODE_TYPES.OUTPUT}-`;
-export const OUTPUT_ID_NEW_PREFIX = "output_";
+export const OUTPUT_NAME_PREFIX = "output_";

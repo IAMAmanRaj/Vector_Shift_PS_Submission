@@ -1,9 +1,10 @@
 import { Position } from "reactflow";
 import { createNode as create } from "./../BaseNode";
 import { NODE_ACCENTS } from "../../constants/theme";
+import { getNextIndexedName } from "../../utils/base-node-helpers";
+
 import {
-  INPUT_ID_OLD_PREFIX,
-  INPUT_ID_NEW_PREFIX,
+  INPUT_NAME_PREFIX,
 } from "../../constants/NodeConstants";
 
 export const InputNode = create({
@@ -17,7 +18,7 @@ export const InputNode = create({
       label: "Name",
       inputType: "text",
       defaultValue: ({ id, data }) =>
-        data?.inputName || id.replace(INPUT_ID_OLD_PREFIX, INPUT_ID_NEW_PREFIX),
+        data?.inputName || getNextIndexedName(INPUT_NAME_PREFIX),
       helperText: "Unique identifier surfaced to downstream nodes.",
     },
     {

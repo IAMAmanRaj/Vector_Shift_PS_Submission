@@ -2,9 +2,9 @@ import { Position } from "reactflow";
 import { createNode as create } from "./../BaseNode";
 import { NODE_ACCENTS } from "../../constants/theme";
 import {
-  OUTPUT_ID_OLD_PREFIX,
-  OUTPUT_ID_NEW_PREFIX,
+  OUTPUT_NAME_PREFIX
 } from "../../constants/NodeConstants";
+import { getNextIndexedName } from "../../utils/base-node-helpers";
 
 export const OutputNode = create({
   title: "Output",
@@ -18,7 +18,7 @@ export const OutputNode = create({
       inputType: "text",
       defaultValue: ({ id, data }) =>
         data?.outputName ||
-        id.replace(OUTPUT_ID_OLD_PREFIX, OUTPUT_ID_NEW_PREFIX),
+        getNextIndexedName(OUTPUT_NAME_PREFIX),
       helperText: "Readable label for this pipeline output.",
     },
     {

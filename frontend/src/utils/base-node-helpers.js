@@ -1,3 +1,5 @@
+import { useStore } from "../store";
+
 export const buildInitialState = (fields, { id, data }) => {
   return fields.reduce((acc, field) => {
     const { key, defaultValue } = field;
@@ -89,3 +91,30 @@ export const renderField = (field, value, onChange) => {
     />
   );
 };
+
+export const getNextIndexedName = (NEW_PREFIX) => {
+  const nodes = useStore.getState().nodes;
+
+  const usedIndexes = nodes
+    .map((node) => {
+      const values = Object.values(node.data || {});
+      const matched = values.find(
+        (value) =>
+          typeof value === "string" && value.startsWith(NEW_PREFIX)
+      );
+
+      if (!matched) return null;
+
+      const index = Number(matched.replace(NEW_PREFIX, ""));
+      return Number.isNaN(index) ? null : index;
+    })
+    .filter((index) => index !== null);
+
+  let nextIndex = 0;
+  while (usedIndexes.includes(nextIndex)) {
+    nextIndex += 1;
+  }
+
+  return `${NEW_PREFIX}${nextIndex}`;
+};
+
