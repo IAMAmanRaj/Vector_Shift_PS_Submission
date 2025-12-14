@@ -1,4 +1,4 @@
-import { memo, useState, useEffect, useCallback } from "react";
+import { memo, useState, useEffect, useCallback, useMemo } from "react";
 import { useStore } from "../store/store";
 import { Handle, Position } from "reactflow";
 import {
@@ -6,6 +6,7 @@ import {
   resolveHandleId,
   renderField,
 } from "./utils/base-node-helpers";
+import { baseContainerStyle, defaultHandleStyle } from "../constants/NodeConstants";
 
 const Base = memo(({ nodeConfig, id, data }) => {
   const {
@@ -21,6 +22,12 @@ const Base = memo(({ nodeConfig, id, data }) => {
   const updateNodeField = useStore((state) => state.updateNodeField);
 
   const [values, setValues] = useState(() => initialData(fields, { id, data }));
+
+  const mergeStyles = (...styles) =>
+  styles
+    .filter(Boolean)
+    .reduce((acc, style) => ({ ...acc, ...style }), {});
+
 
   useEffect(() => {
     setValues((previousValues) => {
@@ -71,9 +78,28 @@ const Base = memo(({ nodeConfig, id, data }) => {
     [id, updateNodeField]
   );
 
+  const computedStyle = useMemo(
+    () => (typeof style === 'function' ? style({ id, data, values }) : style),
+    [style, id, data, values]
+  );
+
+  const computedHandles = useMemo(
+    () =>
+      typeof handles === "function" ? handles({ id, data, values }) : handles,
+    [handles, id, data, values]
+  );
+  const context = useMemo(
+    () => ({
+      id,
+      data,
+      values,
+    }),
+    [id, data, values]
+  );
+
   return (
-    <div className="bg-white rounded-lg shadow-lg border border-gray-200 min-w-[280px] max-w-[400px]">
-      {handles
+    <div style={mergeStyles(baseContainerStyle, computedStyle)}>
+      {computedHandles
         .filter((handle) => handle.position === Position.Left)
         .map((handle) => (
           <Handle
@@ -130,15 +156,33 @@ const Base = memo(({ nodeConfig, id, data }) => {
         })}
       </div>
 
-      {handles
+      {computedHandles
         .filter((handle) => handle.position === Position.Right)
         .map((handle) => (
           <Handle
-            key={`${handle.type}-${resolveHandleId(handle, id)}-right`}
+            key={`${handle.type}-${resolveHandleId(handle, context)}-right`}
             type={handle.type}
             position={Position.Right}
-            id={resolveHandleId(handle, id)}
+            id={resolveHandleId(handle, context)}
             style={handle.style}
+          />
+        ))}
+
+      {computedHandles
+        .filter(
+          (handle) =>
+            handle.position !== Position.Left &&
+            handle.position !== Position.Right
+        )
+        .map((handle) => (
+          <Handle
+            key={`${handle.type}-${resolveHandleId(handle, context)}-${
+              handle.position
+            }`}
+            type={handle.type}
+            position={handle.position}
+            id={resolveHandleId(handle, context)}
+            style={mergeStyles(defaultHandleStyle, handle.style)}
           />
         ))}
     </div>

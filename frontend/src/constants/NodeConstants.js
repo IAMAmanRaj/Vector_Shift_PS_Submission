@@ -89,3 +89,46 @@ export const NODE_ACCENTS = {
   DELAY: COLORS.ORANGE,
   COLLECTOR: COLORS.SLATE,
 };
+
+export const inputBaseStyle = {
+  borderRadius: 8,
+  border: "1px solid #CBD5F5",
+  padding: "6px 8px",
+  fontSize: 12,
+  lineHeight: 1.4,
+  color: "#0F172A",
+  outline: "none",
+  width: "100%",
+  boxSizing: "border-box",
+  background: "#F8FAFC",
+};
+
+export const textareaStyle = {
+  ...inputBaseStyle,
+  minHeight: 64,
+  resize: "vertical",
+};
+
+export const defaultHandleStyle = {
+  width: 10,
+  height: 10,
+  backgroundColor: "#5B8DEF",
+  border: `2px solid #0B1220`,
+  boxShadow: "0 0 8px rgba(96,165,250,0.45)",
+};
+
+export const baseContainerStyle = {
+  width: 260,
+  minHeight: 140,
+  borderRadius: 14,
+  border: `1px solid #EFF6FF`,
+  background: 'linear-gradient(135deg, rgba(248,250,252,1) 0%, rgba(255,255,255,1) 100%)',
+  boxShadow: '0 12px 24px rgba(15, 23, 42, 0.08)',
+  padding: '12px 14px',
+  display: 'flex',
+  flexDirection: 'column',
+  gap: 12,
+  fontFamily:
+    "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+  color: '#0F172A',
+};

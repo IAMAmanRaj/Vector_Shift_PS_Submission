@@ -6,6 +6,11 @@ import { InputNode } from "../nodes/definitions/inputNode";
 import { LLMNode } from "../nodes/definitions/llmNode";
 import { OutputNode } from "../nodes/definitions/outputNode";
 import { TextNode } from "../nodes/definitions/textNode";
+import { DelayNode } from "../nodes/definitions/delayNode";
+import { HttpNode } from '../nodes/definitions/httpNode';
+import { DecisionNode } from '../nodes/definitions/decisionNode';
+import { MathNode } from '../nodes/definitions/mathNode';
+import { CollectorNode } from '../nodes/definitions/collectorNode';
 
 import "reactflow/dist/style.css";
 
@@ -16,6 +21,11 @@ const nodeTypes = {
   llm: LLMNode,
   customOutput: OutputNode,
   text: TextNode,
+  delay: DelayNode,
+  httpRequest: HttpNode,
+  branch: DecisionNode,
+  math: MathNode,
+  collector: CollectorNode,
 };
 
 const selector = (state) => ({

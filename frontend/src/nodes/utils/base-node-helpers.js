@@ -20,12 +20,12 @@ export const buildInitialState = (fields, { id, data }) => {
   }, {});
 };
 
-export const resolveHandleId = (handleConfig, nodeId) => {
+export const resolveHandleId = (handleConfig, context) => {
   const { idSuffix } = handleConfig;
   if (idSuffix) {
-    return `${nodeId}-${idSuffix}`;
+    return `${context.id}-${idSuffix}`;
   }
-  return nodeId;
+  return context.id;
 };
 
 export const renderField = (field, value, onChange) => {

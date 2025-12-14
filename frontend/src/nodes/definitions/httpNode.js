@@ -1,6 +1,6 @@
 import { Position } from 'reactflow';
 import { createNode as create } from "./../BaseNode";
-import { NODE_ACCENTS } from "../../constants/theme";
+import { NODE_ACCENTS } from "../../constants/NodeConstants";
 
 export const HttpNode = create({
   title: 'HTTP Request',
