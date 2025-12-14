@@ -1,13 +1,63 @@
 import { useState } from "react";
+import { useStore } from "../store/store";
+import { shallow } from "zustand/shallow";
+
+const selector = (state) => ({
+  nodes: state.nodes,
+  edges: state.edges,
+});
 
 export const SubmitButton = () => {
   const [isHovered, setIsHovered] = useState(false);
+
+  const { nodes, edges } = useStore(selector, shallow);
+  
+    const handleSubmit = async () => {
+    // Prepare the pipeline data for the backend
+    const pipelineData = {
+      nodes: nodes,
+      edges: edges,
+    };
+
+    try {
+      // Using FormData for sending complex JSON to a FastAPI Form(...) endpoint
+      const formData = new FormData();
+      formData.append("pipeline", JSON.stringify(pipelineData));
+
+      const response = await fetch("http://127.0.0.1:8000/pipelines/parse", {
+        method: "POST", // Use POST since we are sending data, and FastAPI's Form expects it
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const result = await response.json();
+
+      // Create a user-friendly alert
+      const dagStatus = result.is_dag
+        ? "Yes, it is a DAG."
+        : "No, it is NOT a DAG.";
+      const alertMessage =
+        `Pipeline Parse Result:\n\n` +
+        `Number of Nodes: ${result.num_nodes}\n` +
+        `Number of Edges: ${result.num_edges}\n` +
+        `Is Directed Acyclic Graph (DAG): ${dagStatus}`;
+
+      alert(alertMessage);
+    } catch (error) {
+      console.error("Error submitting pipeline:", error);
+      alert(`Error submitting pipeline: ${error.message}`);
+    }
+  };
 
   return (
     <div className="fixed bottom-4 right-4 z-40">
       <div className="relative">
         <button
           type="submit"
+          onClick={handleSubmit}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
           className="relative px-5 py-2.5 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white spaceGroteskMedium text-sm rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 ease-out hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
