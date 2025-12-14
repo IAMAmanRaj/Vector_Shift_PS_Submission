@@ -1,6 +1,6 @@
 import { Position } from "reactflow";
 import { createNode as create } from "./../BaseNode";
-import { NODE_ACCENTS } from "../../constants/theme";
+import { NODE_ACCENTS } from "../../constants/NodeConstants";
 import { getNextIndexedName } from "../utils/base-node-helpers";
 
 import { INPUT_NAME_PREFIX } from "../../constants/NodeConstants";
@@ -9,7 +9,7 @@ export const InputNode = create({
   title: "Input",
   badge: "Source",
   description: "Pass values of various data types into your pipeline",
-  accentColor: NODE_ACCENTS.PRIMARY_BLUE,
+  accentColor: NODE_ACCENTS.INPUT,
   fields: [
     {
       key: "inputName",

@@ -74,11 +74,11 @@ export const PipelineToolbar = () => {
     >
       <button
         onClick={() => setIsCollapsed(!isCollapsed)}
-        className="absolute -right-3 top-1/2 -translate-y-1/2 w-6 h-6 bg-white border border-slate-200 rounded-full shadow-md flex items-center justify-center hover:bg-slate-50 hover:border-slate-300 hover:scale-110 active:scale-95 transition-all duration-200 z-10"
+        className="absolute -right-9 top-1/2 -translate-y-1/2 w-9 h-9 bg-white border border-slate-200 rounded-full shadow-md flex items-center justify-center hover:bg-slate-50 hover:border-slate-300 hover:scale-110 active:scale-95 transition-all duration-200 z-10"
         aria-label={isCollapsed ? "Expand toolbar" : "Collapse toolbar"}
       >
         <HiChevronLeft
-          className={`w-3.5 h-3.5 text-slate-600 transition-transform duration-300 ${
+          className={`w-6 h-6 text-slate-600 transition-transform duration-300 ${
             isCollapsed ? "rotate-180" : ""
           }`}
         />
@@ -86,16 +86,21 @@ export const PipelineToolbar = () => {
 
       {!isCollapsed && (
         <div className="h-full flex flex-col">
-          <div className="px-4 py-5 border-b border-slate-200 opacity-0 animate-[fadeIn_0.3s_ease-out_0.1s_forwards]">
-            <div className="flex items-center gap-2.5 mb-1">
-              <div className="w-8 h-8 bg-gradient-to-br from-slate-700 to-slate-800 rounded-lg flex items-center justify-center shadow-sm transition-transform duration-300 hover:scale-110 hover:rotate-3">
-                <HiViewGrid className="w-4 h-4 text-white" />
+        
+          <div className="px-5 py-4 border-b border-slate-200 opacity-0 animate-[fadeIn_0.3s_ease-out_0.1s_forwards]">
+            <div className="flex flex-col items-center justify-center text-center gap-3">
+              <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center shadow-md transition-all duration-300 hover:scale-110 hover:shadow-lg hover:-translate-y-0.5">
+                <HiViewGrid className="w-6 h-6 text-white" />
               </div>
-              <h2 className="spaceGroteskBold text-lg text-slate-800">Nodes</h2>
+              <div>
+                <h2 className="spaceGroteskBold text-lg text-slate-800 mb-1">
+                  Node Library
+                </h2>
+                <p className="openSansRegular text-xs text-slate-500">
+                  Drag components to canvas
+                </p>
+              </div>
             </div>
-            <p className="openSansRegular text-xs text-slate-500 pl-10">
-              Drag to add to canvas
-            </p>
           </div>
 
           <div className="px-4 pt-4 pb-3 border-b border-slate-100 opacity-0 animate-[fadeIn_0.3s_ease-out_0.15s_forwards]">
@@ -129,8 +134,7 @@ export const PipelineToolbar = () => {
               )}
             </div>
           </div>
-
-          <div className="flex-1 overflow-y-auto px-4 py-4 opacity-0 animate-[fadeIn_0.3s_ease-out_0.2s_forwards]">
+          <div className="flex-1 overflow-y-auto px-4 py-4 custom-scrollbar opacity-0 animate-[fadeIn_0.3s_ease-out_0.2s_forwards]">
             {Object.entries(groupedNodes).length === 0 ? (
               <div className="flex flex-col items-center justify-center py-16 text-center">
                 <div className="w-14 h-14 bg-slate-100 rounded-full flex items-center justify-center mb-3">

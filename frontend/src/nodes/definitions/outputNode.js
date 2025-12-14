@@ -1,6 +1,6 @@
 import { Position } from "reactflow";
 import { createNode as create } from "./../BaseNode";
-import { NODE_ACCENTS } from "../../constants/theme";
+import { NODE_ACCENTS } from "../../constants/NodeConstants";
 import { OUTPUT_NAME_PREFIX } from "../../constants/NodeConstants";
 import { getNextIndexedName } from "../utils/base-node-helpers";
 
@@ -8,7 +8,7 @@ export const OutputNode = create({
   title: "Output",
   badge: "Sink",
   description: "Pass data out of your pipeline",
-  accentColor: NODE_ACCENTS.YELLOW,
+  accentColor: NODE_ACCENTS.OUTPUT,
   fields: [
     {
       key: "outputName",

@@ -1,12 +1,12 @@
 import { Position } from "reactflow";
 import { createNode as create } from "./../BaseNode";
-import { NODE_ACCENTS } from "../../constants/theme";
+import { NODE_ACCENTS } from "../../constants/NodeConstants";
 
 export const LLMNode = create({
   title: "LLM",
   badge: "Processor",
   description: "Utilize LLMs in your pipelines.",
-  accentColor: NODE_ACCENTS.PURPLE,
+  accentColor: NODE_ACCENTS.LLM,
 
   fields: [
     {
