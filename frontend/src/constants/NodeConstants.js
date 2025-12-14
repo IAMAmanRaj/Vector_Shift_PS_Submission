@@ -1,22 +1,35 @@
-/**
- * This file defines prefixes used across the application for custom node types
- * (used in toolbar) and internal ID generation (used in node creation logic).
- */
+export const NODE_CATEGORIES = {
+  START: "Start",
+  AI: "AI",
+  INTEGRATIONS: "Integrations",
+};
 
 export const NODE_TYPES = {
   // This is for the 'type' property passed to the DraggableNode component
-  INPUT: "customInput",
-  LLM: "llm",
-  OUTPUT: "customOutput",
-  TEXT: "text",
+  START: {
+    INPUT: "customInput",
+    OUTPUT: "customOutput",
+  },
+  AI: {
+    LLM: "llm",
+  },
+  INTEGRATIONS: {
+    TEXT: "text",
+  },
 };
 
 export const NODE_LABELS = {
   // for the 'label' property passed to the DraggableNode component
-  INPUT: "Input",
-  LLM: "LLM",
-  OUTPUT: "Output",
-  TEXT: "Text",
+  START: {
+    INPUT: "Input",
+    OUTPUT: "Output",
+  },
+  AI: {
+    LLM: "LLM",
+  },
+  INTEGRATIONS: {
+    TEXT: "Text",
+  },
 };
 
 // This is for Internal ID Handling (For defaultValue logic when there's no initial data coming from reactflow render)

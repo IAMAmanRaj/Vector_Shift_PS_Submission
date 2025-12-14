@@ -72,7 +72,7 @@ const Base = memo(({ nodeConfig, id, data }) => {
   );
 
   return (
-    <div>
+    <div className="bg-white rounded-lg shadow-lg border border-gray-200 min-w-[280px] max-w-[400px]">
       {handles
         .filter((handle) => handle.position === Position.Left)
         .map((handle) => (
@@ -85,19 +85,15 @@ const Base = memo(({ nodeConfig, id, data }) => {
           />
         ))}
 
-      <div>
-        <span style={{ color: accentColor, fontWeight: "bold" }}>{title}</span>
+      <div className="px-4 py-3 border-b border-gray-100 flex items-center justify-between">
+        <span className="font-semibold text-lg" style={{ color: accentColor }}>
+          {title}
+        </span>
 
         {badge && (
           <span
-            style={{
-              backgroundColor: accentColor,
-              color: "white",
-              marginLeft: "8px",
-              padding: "2px 6px",
-              borderRadius: "4px",
-              fontSize: "0.8em",
-            }}
+            className="px-2 py-1 rounded text-xs font-medium text-white"
+            style={{ backgroundColor: accentColor }}
           >
             {badge}
           </span>
@@ -105,31 +101,30 @@ const Base = memo(({ nodeConfig, id, data }) => {
       </div>
 
       {description && (
-        <p
-          style={{
-            marginTop: "5px",
-            marginBottom: "0",
-            fontSize: "0.9em",
-            color: "#6B7280",
-            wordBreak: "break-word",
-            padding: "0 10px",
-          }}
-        >
+        <p className="px-4 py-2 text-sm text-gray-600 border-b border-gray-100 break-words">
           {description}
         </p>
       )}
 
-      <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+      <div className="p-4 space-y-4">
         {fields.map((field) => {
           const value = values[field.key];
           const onChange = (nextValue) => handleFieldChange(field, nextValue);
           const { label, helperText } = field;
 
           return (
-            <div key={field.key}>
-              {label && <label>{label}</label>}
+            <div key={field.key} className="space-y-1.5">
+              {label && (
+                <label className="block text-sm font-medium text-gray-700">
+                  {label}
+                </label>
+              )}
               {renderField(field, value, onChange)}
-              {helperText && <small>{helperText}</small>}
+              {helperText && (
+                <small className="block text-xs text-gray-500 mt-1">
+                  {helperText}
+                </small>
+              )}
             </div>
           );
         })}
