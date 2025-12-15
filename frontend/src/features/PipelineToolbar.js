@@ -220,7 +220,7 @@ export const PipelineToolbar = () => {
       )}
 
       {isCollapsed && (
-        <div className="h-full flex flex-col items-center pt-6 gap-4">
+        <div className="h-full flex flex-col items-center pt-4 gap-4">
           <button
             onClick={() => setIsCollapsed(false)}
             className="w-10 h-10 rounded-lg bg-slate-100 hover:bg-slate-200 hover:scale-110 active:scale-95 flex items-center justify-center transition-all duration-200"
