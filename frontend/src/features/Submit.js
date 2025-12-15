@@ -9,6 +9,10 @@ const selector = (state) => ({
   edges: state.edges,
 });
 
+const BACKEND_URL =
+  process.env.REACT_APP_BACKEND_URL || "http://127.0.0.1:8000"; // <--- FALLBACK HERE
+const API_ENDPOINT = `${BACKEND_URL}/pipelines/parse`;
+
 export const SubmitButton = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [toast, setToast] = useState(null);
@@ -43,7 +47,7 @@ export const SubmitButton = () => {
       const formData = new FormData();
       formData.append("pipeline", JSON.stringify(pipelineData));
 
-      const response = await fetch("http://127.0.0.1:8000/pipelines/parse", {
+      const response = await fetch(API_ENDPOINT, {
         method: "POST",
         body: formData,
       });

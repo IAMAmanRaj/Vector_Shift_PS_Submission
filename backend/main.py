@@ -1,5 +1,4 @@
-# /backend/main.py (Updated for Part 4)
-
+import os # Import the os module to access environment variables
 from fastapi import FastAPI, Form
 from typing import List, Dict, Any
 import json
@@ -9,12 +8,30 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
-# Add CORS middleware to allow the React frontend to communicate with the backend
-# In a real app, you would restrict origins to your frontend URL
-origins = [
+# --- START OF NECESSARY CHANGE ---
+
+# 1. Define the default origins (for local development)
+default_origins = [
+    "https://reactflow-pipeline-editor.vercel.app/",
     "http://localhost:3000",  # Default React development port
     "http://127.0.0.1:3000",
 ]
+
+# 2. Read the allowed origin from the environment variable (e.g., in Vercel)
+# The variable is named 'FRONTEND_ORIGIN'
+frontend_origin_env = os.getenv("FRONTEND_ORIGIN")
+
+# 3. Construct the final list of allowed origins
+if frontend_origin_env:
+    # If the environment variable is set, add it to the list of allowed origins.
+    # This covers cases where 'FRONTEND_ORIGIN' is the deployed Vercel URL.
+    origins = default_origins + [frontend_origin_env]
+else:
+    # If the environment variable is not set (e.g., during local testing), 
+    # use only the default origins.
+    origins = default_origins
+
+print(f"Configured CORS Origins: {origins}") # Helpful for debugging
 
 app.add_middleware(
     CORSMiddleware,
@@ -23,6 +40,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# --- END OF NECESSARY CHANGE ---
 
 @app.get('/')
 def read_root():
@@ -65,6 +84,8 @@ def check_for_dag(nodes: List[Dict[str, Any]], edges: List[Dict[str, Any]]) -> b
     # 2. Check for Cycles using DFS
     visited = {node_id: False for node_id in node_ids}
     recursion_stack = {node_id: False for node_id in node_ids}
+    
+    # 
 
     # Iterate over all nodes in case the graph is disconnected
     for node_id in node_ids:
@@ -82,6 +103,8 @@ def parse_pipeline(pipeline: str = Form(...)):
     try:
         pipeline_data = json.loads(pipeline)
     except json.JSONDecodeError:
+        # FastAPI's HTTPException is preferred for proper HTTP error responses, 
+        # but sticking to the original return format for minimal changes.
         return {'error': 'Invalid JSON format for pipeline data'}, 400
 
     nodes = pipeline_data.get('nodes', [])
