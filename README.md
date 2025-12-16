@@ -11,6 +11,8 @@ My submission for VectorShift Frontend Technical Assessment. This project enable
 
 ---
 
+## 💻 Tech Stack
+
 [![React](https://img.shields.io/badge/react-18.2.0-61dafb?style=flat&logo=react)](https://react.dev/)
 [![React Flow](https://img.shields.io/badge/React%20Flow-11.8.3-FF0055?style=flat&logo=reactflow)](https://reactflow.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3.4.19-06B6D4?style=flat&logo=tailwindcss)](https://tailwindcss.com/)
@@ -20,8 +22,6 @@ My submission for VectorShift Frontend Technical Assessment. This project enable
 
 ---
 
-## 💻 Tech Stack
-
 | Component | Technology | Key Libraries |
 | :--- | :--- | :--- |
 | **Frontend UI** | **React** | **React Flow**, **Tailwind CSS**, **React Icons** |
@@ -30,12 +30,7 @@ My submission for VectorShift Frontend Technical Assessment. This project enable
 
 ---
 
-Service,Status,Live URL (Replace Placeholders)
-Frontend UI,Deployed,[INSERT YOUR LIVE FRONTEND URL HERE]
-Backend API,Deployed,[INSERT YOUR LIVE BACKEND URL HERE]
-
 ## Core Features
-
 
 Built using **React Flow**, a highly customizable library for creating node-based editors.
 
