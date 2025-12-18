@@ -58,28 +58,7 @@ code {
     font-weight: 700;
 }
 
-/* === Disable blue outline on selected nodes === */
-.react-flow__node.selected {
-  outline: none !important;
-  box-shadow: none !important;
-}
 
-/* === Disable blue stroke on selected edges === */
-.react-flow__edge.selected .react-flow__edge-path {
-  stroke: #94a3b8 !important; /* same as default edge */
-  stroke-width: 2px !important;
-}
-
-/* === Disable drag-selection rectangle === */
-.react-flow__selection {
-  background: transparent !important;
-  border: none !important;
-}
-
-.react-flow__selection-rect {
-  fill: transparent !important;
-  stroke: none !important;
-}
 
 /* Custom scrollbar (WebKit browsers) */
 .custom-scrollbar::-webkit-scrollbar {
@@ -103,4 +82,43 @@ code {
 .custom-scrollbar {
   scrollbar-width: thin;
   scrollbar-color: #0EA5E9 transparent;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.8);
+    background-color: var(--dot-color-start);
+    box-shadow: 0 0 0 0 var(--dot-shadow);
+  }
+
+  50% {
+    transform: scale(1.0);
+    background-color: var(--dot-color-end);
+    box-shadow: 0 0 0 10px rgba(178, 212, 252, 0);
+  }
+
+  100% {
+    transform: scale(0.8);
+    background-color: var(--dot-color-start);
+    box-shadow: 0 0 0 0 var(--dot-shadow);
+  }
+}
+
+.dot {
+  height: 12px;
+  width: 12px;
+  margin-right: 5px;
+  border-radius: 10px;
+  background-color: var(--dot-color-start);
+  animation: pulse 3s infinite ease-in-out;
+  transition: background-color 0.3s;
+}
+
+:root {
+    --bg-color: #121212;
+    --text-color: #ffffff;
+    --footer-bg: rgba(0, 0, 0, 0.5);
+    --dot-color-start: #b3d4fc;
+    --dot-color-end: #6793fb;
+    --dot-shadow: rgba(178, 212, 252, 0.7);
 }

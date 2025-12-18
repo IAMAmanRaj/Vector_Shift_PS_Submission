@@ -26,8 +26,8 @@ export const InputNode = create({
       defaultValue: ({ data }) => data?.inputType || "Text",
       options: [
         { label: "Text", value: "Text" },
-        { label: "File", value: "File" },
         { label: "Number", value: "Number" },
+        { label: "File", value: "File" },
       ],
     },
   ],

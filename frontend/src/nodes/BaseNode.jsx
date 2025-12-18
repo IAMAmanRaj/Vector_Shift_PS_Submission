@@ -1,6 +1,7 @@
 import { memo, useState, useEffect, useCallback, useMemo } from "react";
 import { useStore } from "../store/store";
 import { Handle, Position } from "reactflow";
+import { GoDot } from "react-icons/go";
 import {
   buildInitialState as initialData,
   resolveHandleId,
@@ -103,12 +104,21 @@ const Base = memo(({ nodeConfig, id, data }) => {
         .filter((handle) => handle.position === Position.Left)
         .map((handle) => (
           <Handle
+            className=""
             key={`${handle.type}-${resolveHandleId(handle, id)}-left`}
             type={handle.type}
             position={Position.Left}
             id={resolveHandleId(handle, id)}
-            style={handle.style}
-          />
+             style={{
+          background: 'none',
+          border: 'none',
+          width: '1em',
+               height: '1em',
+            top:handle.style?.top,
+        }}
+          >
+            <div style={{ pointerEvents: 'none' }} className="dot absolute -ml-[2px]"></div>
+          </Handle>
         ))}
 
       <div className="px-4 py-3 border-b border-gray-100 flex items-center justify-between">
@@ -164,27 +174,20 @@ const Base = memo(({ nodeConfig, id, data }) => {
             type={handle.type}
             position={Position.Right}
             id={resolveHandleId(handle, context)}
-            style={handle.style}
-          />
+            style={{
+          background: 'none',
+          border: 'none',
+          width: '1em',
+          height: '1em',
+        }}
+          >
+            <div
+              style={{ pointerEvents: 'none' }}
+              className="dot absolute ml-[5.5px]"></div>
+          </Handle>
         ))}
 
-      {computedHandles
-        .filter(
-          (handle) =>
-            handle.position !== Position.Left &&
-            handle.position !== Position.Right
-        )
-        .map((handle) => (
-          <Handle
-            key={`${handle.type}-${resolveHandleId(handle, context)}-${
-              handle.position
-            }`}
-            type={handle.type}
-            position={handle.position}
-            id={resolveHandleId(handle, context)}
-            style={mergeStyles(defaultHandleStyle, handle.style)}
-          />
-        ))}
+    
     </div>
   );
 });
