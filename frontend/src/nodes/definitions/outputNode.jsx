@@ -1,5 +1,5 @@
 import { Position } from "reactflow";
-import { createNode as create } from "./../BaseNode";
+import { createNode as create } from "./../BaseNode.jsx";
 import { NODE_ACCENTS } from "../../constants/NodeConstants";
 import { OUTPUT_NAME_PREFIX } from "../../constants/NodeConstants";
 import { getNextIndexedName } from "../utils/base-node-helpers";

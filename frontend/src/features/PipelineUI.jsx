@@ -2,15 +2,15 @@ import { useState, useRef, useCallback } from "react";
 import ReactFlow, { Controls, Background, MiniMap } from "reactflow";
 import { useStore } from "../store/store";
 import { shallow } from "zustand/shallow";
-import { InputNode } from "../nodes/definitions/inputNode";
-import { LLMNode } from "../nodes/definitions/llmNode";
-import { OutputNode } from "../nodes/definitions/outputNode";
-import { TextNode } from "../nodes/definitions/textNode";
-import { DelayNode } from "../nodes/definitions/delayNode";
-import { HttpNode } from "../nodes/definitions/httpNode";
-import { DecisionNode } from "../nodes/definitions/decisionNode";
-import { MathNode } from "../nodes/definitions/mathNode";
-import { CollectorNode } from "../nodes/definitions/collectorNode";
+import { InputNode } from "../nodes/definitions/inputNode.jsx";
+import { LLMNode } from "../nodes/definitions/llmNode.jsx";
+import { OutputNode } from "../nodes/definitions/outputNode.jsx";
+import { TextNode } from "../nodes/definitions/textNode.jsx";
+import { DelayNode } from "../nodes/definitions/delayNode.jsx";
+import { HttpNode } from "../nodes/definitions/httpNode.jsx";
+import { DecisionNode } from "../nodes/definitions/decisionNode.jsx";
+import { MathNode } from "../nodes/definitions/mathNode.jsx";
+import { CollectorNode } from "../nodes/definitions/collectorNode.jsx";
 
 import "reactflow/dist/style.css";
 

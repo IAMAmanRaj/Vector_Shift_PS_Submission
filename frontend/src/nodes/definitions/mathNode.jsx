@@ -1,5 +1,5 @@
 import { Position } from 'reactflow';
-import { createNode as create } from "./../BaseNode";
+import { createNode as create } from "./../BaseNode.jsx";
 import { NODE_ACCENTS } from "../../constants/NodeConstants";
 
 export const MathNode = create({

@@ -1,6 +1,6 @@
-import { PipelineUI } from "./features/PipelineUI";
-import { SubmitButton } from "./features/Submit";
-import { PipelineToolbar } from "./features/PipelineToolbar";
+import { PipelineUI } from "./features/PipelineUI.jsx";
+import { SubmitButton } from "./features/Submit.jsx";
+import { PipelineToolbar } from "./features/PipelineToolbar.jsx";
 
 function App() {
   return (

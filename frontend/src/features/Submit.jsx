@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useStore } from "../store/store";
 import { shallow } from "zustand/shallow";
 import { HiPlay } from "react-icons/hi2";
-import { Toast } from "../components/Toast";
+import { Toast } from "../components/Toast.jsx";
 
 const selector = (state) => ({
   nodes: state.nodes,
