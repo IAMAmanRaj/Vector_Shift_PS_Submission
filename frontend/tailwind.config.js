@@ -3,6 +3,13 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+        colors: {
+        bg: 'var(--bg-app)',
+        panel: 'var(--bg-panel)',
+        border: 'var(--border-default)',
+        text: 'var(--text-primary)',
+        muted: 'var(--text-secondary)',
+      },
       keyframes: {
         fadeIn: {
           "0%": { opacity: "0" },

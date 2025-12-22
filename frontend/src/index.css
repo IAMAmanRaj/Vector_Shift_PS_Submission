@@ -137,3 +137,71 @@ code {
 .animate-slideDown {
   animation: slideDown 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+/* =========================
+   THEME VARIABLES
+   ========================= */
+
+:root {
+  --bg-app: #f8fafc;
+  --bg-panel: #ffffff;
+  --border-default: #e2e8f0;
+  --text-primary: #0f172a;
+  --text-secondary: #64748b;
+
+  /* React Flow */
+  --rf-bg: #f8fafc;
+  --rf-grid: #e5e7eb;
+  --rf-edge: #94a3b8;
+  --rf-controls-bg: #ffffff;
+  --rf-minimap-bg: #ffffff;
+}
+
+/* Dark theme overrides */
+[data-theme='dark'] {
+  --bg-app: #020617;
+  --bg-panel: #020617;
+  --border-default: #334155;
+  --text-primary: #e5e7eb;
+  --text-secondary: #94a3b8;
+
+  /* React Flow */
+  --rf-bg: #020617;
+  --rf-grid: #020617;
+  --rf-edge: #475569;
+  --rf-controls-bg: #020617;
+  --rf-minimap-bg: #020617;
+}
+
+
+.react-flow {
+  background: var(--rf-bg);
+}
+
+.react-flow__background {
+  background: var(--rf-bg);
+}
+
+.react-flow__edge path {
+  stroke: var(--rf-edge);
+}
+
+.react-flow__controls {
+  background: var(--rf-controls-bg);
+  border-color: var(--border-default);
+}
+
+.react-flow__minimap {
+  background: var(--rf-minimap-bg);
+}
+
+.react-flow__minimap {
+  background: var(--rf-minimap-bg) !important;
+}
+
+.react-flow__controls {
+  background: var(--rf-controls-bg) !important;
+  border-color: var(--border-default) !important;
+}
+
+
