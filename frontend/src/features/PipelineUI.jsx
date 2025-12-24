@@ -12,6 +12,9 @@ import { DecisionNode } from "../nodes/definitions/decisionNode.jsx";
 import { MathNode } from "../nodes/definitions/mathNode.jsx";
 import { CollectorNode } from "../nodes/definitions/collectorNode.jsx";
 import { FiSun, FiMoon } from "react-icons/fi";
+import { FaRegCircleDot } from "react-icons/fa6";
+import { FaLinode } from "react-icons/fa";
+import { TfiLink } from "react-icons/tfi";
 
 import "reactflow/dist/style.css";
 import { edgeTypes } from "../components/customEdge.jsx";
@@ -141,29 +144,19 @@ export const PipelineUI = () => {
         <div className="flex items-center gap-2.5">
           <div className="flex items-center gap-2 px-3 py-1.5 bg-panel rounded-lg border border-border">
             <div
-              className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                nodes.length > 0 ? "bg-green-500" : "bg-slate-400"
-              }`}
-            ></div>
+             
+            >
+              <FaRegCircleDot className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                nodes.length > 0 ? "text-green-500" : "text-slate-400"
+              }`}/>
+            </div>
             <span className="openSansRegular text-xs text-text">
               {nodes.length} {nodes.length === 1 ? "node" : "nodes"}
             </span>
           </div>
 
           <div className="flex items-center gap-2 px-3 py-[6px] bg-panel rounded-lg border border-border">
-            <svg
-              className="w-4 h-4 text-muted"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
-              />
-            </svg>
+           <TfiLink className="w-6 h-6 text-muted transition-all duration-300"/>
             <span className="openSansRegular text-xs text-text">
               {edges.length} {edges.length === 1 ? "connection" : "connections"}
             </span>
@@ -191,20 +184,8 @@ export const PipelineUI = () => {
         {nodes.length === 0 && (
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
             <div className="text-center animate-fadeIn">
-              <div className="w-16 h-16 mx-auto mb-4 bg-panel rounded-xl flex items-center justify-center border border-border">
-                <svg
-                  className="w-8 h-8 text-muted"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1.5}
-                    d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
-                  />
-                </svg>
+              <div className="mx-auto mb-4 rounded-xl flex items-center justify-center ">
+                <FaLinode className="text-muted w-32 h-32 "/>
               </div>
               <h3 className="spaceGroteskBold text-lg text-text mb-1.5">
                 Start Building
